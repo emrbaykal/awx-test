@@ -1,0 +1,14 @@
+---
+
+    - name: Netmasks
+      debug:
+        var: ansible_facts["all_ipv4_addresses"] 
+
+    - set_fact:
+        backup: "{{ansible_facts['all_ipv4_addresses'] }}"
+
+    - name: mesaj
+      debug: 
+         msg: This is test
+      when:  ansible_facts['all_ipv4_addresses']  | select('search', '10.254.254.*') | list | length > 0
+        
