@@ -1,5 +1,9 @@
 ---
+- hosts: all
+  gather_facts: true
 
+  tasks:
+  
     - name: Netmasks
       debug:
         var: ansible_facts["all_ipv4_addresses"] 
